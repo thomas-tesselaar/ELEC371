@@ -1,0 +1,19 @@
+First two stages of execution are provided below.
+1. Mem. address <- [PC], read mem., IR <- mem. data, PC <- [PC] + 1
+2. Decode instr., RA <- [Rs], RB <- [Rt], prepare immediate value (based on decode)
+
+
+Prepare RTN descriptions for the three stages after fetch/decode for Load Rt,X(Rs).
+3. RZ <- [RA] + X
+4. Mem. address <- RZ, read mem. RY <- mem. data
+5. Rt <- [RY]
+
+Prepare RTN descriptions for the three stages after fetch/decode for Add Rd, Rs, Rt.
+3. RZ <- [RA] + [RB]
+4. RY <- [RZ]
+5. Rd <- [RY]
+
+Write combinational logic expressions for the control signals that are listed below.
+RF_Write = T5 * (Load + ALU + Call)
+Mem_Read = T1 + T4 * (Load)
+IR_enable = T1
