@@ -102,27 +102,24 @@
 /* define pointer macros for accessing the timer interface registers */
 
 #define TIMER1_STATUS	((volatile unsigned int *) 0x10004020)
-#define TIMER2_STATUS	((volatile unsigned int *) 0x10004040)
-#define TIMER3_STATUS	((volatile unsigned int *) 0x10004060)
-
 #define TIMER1_CONTROL	((volatile unsigned int *) 0x10004024)
-#define TIMER2_CONTROL	((volatile unsigned int *) 0x10004044)
-#define TIMER3_CONTROL	((volatile unsigned int *) 0x10004064)
-
 #define TIMER1_START_LO	((volatile unsigned int *) 0x10004028)
-#define TIMER2_START_LO	((volatile unsigned int *) 0x10004048)
-#define TIMER3_START_LO	((volatile unsigned int *) 0x10004068)
-
 #define TIMER1_START_HI	((volatile unsigned int *) 0x1000402C)
-#define TIMER2_START_HI	((volatile unsigned int *) 0x1000404C)
-#define TIMER3_START_HI	((volatile unsigned int *) 0x1000406C)
-
 #define TIMER1_SNAP_LO	((volatile unsigned int *) 0x10004030)
-#define TIMER2_SNAP_LO	((volatile unsigned int *) 0x10004050)
-#define TIMER3_SNAP_LO	((volatile unsigned int *) 0x10004070)
-
 #define TIMER1_SNAP_HI	((volatile unsigned int *) 0x10004034)
+
+#define TIMER2_STATUS	((volatile unsigned int *) 0x10004040)
+#define TIMER2_CONTROL	((volatile unsigned int *) 0x10004044)
+#define TIMER2_START_LO	((volatile unsigned int *) 0x10004048)
+#define TIMER2_START_HI	((volatile unsigned int *) 0x1000404C)
+#define TIMER2_SNAP_LO	((volatile unsigned int *) 0x10004050)
 #define TIMER2_SNAP_HI	((volatile unsigned int *) 0x10004054)
+
+#define TIMER3_STATUS	((volatile unsigned int *) 0x10004060)
+#define TIMER3_CONTROL	((volatile unsigned int *) 0x10004064)
+#define TIMER3_START_LO	((volatile unsigned int *) 0x10004068)
+#define TIMER3_START_HI	((volatile unsigned int *) 0x1000406C)
+#define TIMER3_SNAP_LO	((volatile unsigned int *) 0x10004070)
 #define TIMER3_SNAP_HI	((volatile unsigned int *) 0x10004074)
 
 
@@ -200,24 +197,22 @@ void interrupt_handler(void)
 
 void Init (void)
 {
-	// START_LO
+	// TIMER1
 	*TIMER1_START_LO = 0x9680;
-	*TIMER2_START_LO = 0xBC20;
-	*TIMER3_START_LO = 0x7840;
-	
-	// START_HI
 	*TIMER1_START_HI = 0x0098;
-	*TIMER2_START_HI = 0x00BE;
-	*TIMER3_START_HI = 0x017D;
-	
-	// CONTROL
 	*TIMER1_CONTROL = 0x7;
-	*TIMER2_CONTROL = 0x7;
-	*TIMER3_CONTROL = 0x7;
-	
-	// STATUS
 	*TIMER1_STATUS = 0;
+	
+	// TIMER2
+	*TIMER2_START_LO = 0xBC20;
+	*TIMER2_START_HI = 0x00BE;
+	*TIMER2_CONTROL = 0x7;
 	*TIMER2_STATUS = 0;
+	
+	// TIMER3
+	*TIMER3_START_LO = 0x7840;
+	*TIMER3_START_HI = 0x017D;
+	*TIMER3_CONTROL = 0x7;
 	*TIMER3_STATUS = 0;
 	
 	*LEDS = 0x300;
