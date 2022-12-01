@@ -3,8 +3,6 @@
 #include "adc.h"
 
 /* place additional #define macros here */
-#ifndef _TIMER_H_
-#define _TIMER_H_
 
 #define HEX_DISPLAY (volatile unsigned int *) 0x10000020
 
@@ -20,8 +18,6 @@
 
 #define TIMER_TO_BIT 0x1
 
-
-#endif /* _TIMER_H_ */
 
 #define SWITCHES (volatile unsigned int *) 0x10000040
 
@@ -107,7 +103,8 @@ void Init (void)
 
 int main (void)
 {
-	Init ();	/* perform software/hardware initialization */
+	/* perform software/hardware initialization */
+	Init ();
 	InitADC(2, 2);
 	
 	unsigned int potentReading;
