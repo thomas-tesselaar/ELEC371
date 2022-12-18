@@ -42,7 +42,7 @@ void PrintChar(unsigned int ch) {
 
 void PrintHexDigit(unsigned int hex) {
   if (hex >= 10) {
-    PrintChar(hex - '0' + 'A');
+    PrintChar(hex - 10 + 'A');
   } else { 
     PrintChar(hex + '0');}
 }
